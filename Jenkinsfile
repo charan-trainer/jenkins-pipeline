@@ -2,8 +2,10 @@ pipeline {
     agent any
     stages {
         stage('Build Artifacts') {
-            sh "mvn clean package -DskipTests=true"
-            archive "target/*.jar"
+            steps{
+                sh "mvn clean package -DskipTests=true"
+                archive "target/*.jar"
+            }
         }
         stage('Tests') {
             steps {
