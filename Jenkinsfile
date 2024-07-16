@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools {
+        maven "Maven 3.9.2"
+    }
     stages {
         stage('Build Artifacts') {
             steps{
@@ -9,7 +12,7 @@ pipeline {
         }
         stage('Tests') {
             steps {
-                sh "mv test"
+                sh "mvn test"
             }
             post{
                 always{
